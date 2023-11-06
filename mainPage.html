@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lan="en">
+<head>
+    <title>RAINCHECCK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css\mainPage.css" rel="stylesheet">
+    <meta charset="UTF-8">
+
+
+</head>
+<body>
+
+    <div id="container">
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Aktuālie laikapstākļi</a>
+            <a href="#">Meklēt pēc pilsētas</a>
+            <a href="#">Preferences</a>
+            <a href="#">Lietotāja iestatījumi</a>
+          </div>
+          
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    
+    <div id="container2">
+
+      <p id="city">Rīga</p>
+
+
+
+      <p id="dateDisplay">Datums: <span id="currentDate"></span></p>
+
+      <button onclick="displayPreviousDate()">&larr;</button>
+
+    <img src="photos/sun.png">
+
+      <button onclick="displayNextDate()">&rarr;</button>
+
+
+
+    </div>
+
+
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "400px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+
+        let currentDate = new Date();
+          document.getElementById('currentDate').innerText = currentDate.toDateString();
+
+          function displayNextDate() {
+            currentDate.setDate(currentDate.getDate() + 1);
+            document.getElementById('currentDate').innerText = currentDate.toDateString();
+          }
+
+          function displayPreviousDate() {
+            currentDate.setDate(currentDate.getDate() - 1);
+            document.getElementById('currentDate').innerText = currentDate.toDateString();
+          }
+        </script>
+</body>
+</html>

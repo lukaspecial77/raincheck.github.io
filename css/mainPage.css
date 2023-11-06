@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Corbel', Arial, sans-serif;
-    background: #bae8e8;
+    background: #E0FFFF;
 }
 
 #container{
@@ -73,7 +73,7 @@ body {
 
   #prev, #next{
     color: black;
-    background: #bae8e8;
+    background: #E0FFFF;
     border: none;
     cursor: pointer;
     height: 5%;

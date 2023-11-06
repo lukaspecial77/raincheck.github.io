@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lan="en">
+<head>
+    <title>RAINCHECCK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css\search.css" rel="stylesheet">
+    <meta charset="UTF-8">
+
+
+</head>
+<body>
+
+    <div id="container">
+
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="mainPage.html">Aktuālie laikapstākļi</a>
+        <a href="search.html">Meklēt pēc pilsētas</a>
+        <a href="preferences.html">Preferences</a>
+        <a href="settings.html">Lietotāja iestatījumi</a>
+      </div>
+          
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    
+<div id="conatiner">
+    <img src="photos/logo.png">
+
+
+      <div class="dropdown-container">
+        <form id="dropdownForm">
+          <select class="dropdown" id="dropdownSelect">
+            <option value="Aizkraukle">Aizkraukle</option>
+            <option value="Aizpute">Aizpute</option>
+            <option value="Aluksne">Alūksne</option>
+            <option value="Auce">Auce</option>
+            <option value="Baldone">Baldone </option>
+            <option value="Balozi">Baloži</option>
+            <option value="Balvi">Balvi</option>
+            <option value="Bauska">Bauska</option>
+            <option value="Broceni">Brocēni</option>
+            <option value="Cesis">Cēsis</option>
+            <option value="Dagda">Dagda</option>
+            <option value="Daugavpils">Daugavpils</option>
+            <option value="Dobele">Dobele</option>
+            <option value="Ergli">Ērgļi</option>
+            <option value="Grobina">Grobiņa</option>
+            <option value="Gulbene">Gulbene</option>
+            <option value="Iecava">Iecava</option>
+            <option value="Ikskile">Ikšķile</option>
+            <option value="Ilukste">Ilūkste</option>
+            <option value="Irbene">Irbene </option>
+            <option value="Jaunjelgava">Jaunjelgava</option>
+            <option value="Jeglava">Jelgava</option>
+            <option value="Jekabpils">Jēkabpils</option>
+            <option value="Jurmala">Jūrmala </option>
+            <option value="Klanciems">Kalnciems</option>
+            <option value="Kandava">Kandava</option>
+            <option value="Karsava">Kārsava</option>
+            <option value="Koknese">Koknese</option>
+            <option value="Kraslava">Krāslava</option>
+            <option value="Kuldiga">Kuldīga</option>
+            <option value="Lielvarde">Lielvārde</option>
+            <option value="Liepaja">Liepāja</option>
+            <option value="Limbazi">Limbaži</option>
+            <option value="Livani">Līvāni</option>
+            <option value="Ludza">Ludza</option>
+            <option value="Malta">Malta</option>
+            <option value="Mazsalaca">Mazsalaca</option>
+            <option value="Ogre">Ogre</option>
+            <option value="Olaine">Olaine</option>
+            <option value="Ozolnieki">Ozolnieki</option>
+            <option value="Plavinas">Pļaviņas</option>
+            <option value="Preili">Preiļi</option>
+            <option value="Priekule">Priekule</option>
+            <option value="Rezekne">Rēzekne</option>
+            <option value="Riga">Rīga</option>
+            <option value="Roja">Roja</option>
+            <option value="Rujiena">Rūjiena</option>
+            <option value="Sabile">Sabile</option>
+            <option value="Salacgriva">Salacgrīva</option>
+            <option value="Saldus">Saldus</option>
+            <option value="Saulkrasti">Saulkrasti</option>
+            <option value="Seda">Seda</option>
+            <option value="Sigulda">Sigulda</option>
+            <option value="Skriveri">Skrīveri</option>
+            <option value="Skrunda">Skrunda</option>
+            <option value="Smiltene">Smiltene</option>
+            <option value="Stende">Stende</option>
+            <option value="Strenci">Strenči</option>
+            <option value="Talsi">Talsi</option>
+            <option value="Tukums">Tukums</option>
+            <option value="Vainode">Vaiņode</option>
+            <option value="Valka">Valka</option>
+            <option value="Valmiera">Valmiera</option>
+            <option value="Vangazi">Vangaži</option>
+            <option value="Varaklani">Varakļāni</option>
+            <option value="Ventspils">Ventspils</option>
+            <option value="Viesite">Viesīte</option>
+            <option value="Vilaka">Viļaka</option>
+            <option value="Vilani">Viļāni</option>
+            <option value="Zilupe">Zilupe</option>
+            <option value="Madona">Madona</option>
+          </select>
+          <br>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <div class="selected-option" id="selectedOption"></div>
+      </div>
+</div>
+
+
+
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "400px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+
+        document.getElementById('dropdownForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const dropdown = document.getElementById('dropdownSelect');
+      const selectedOption = document.getElementById('selectedOption');
+      const selectedText = dropdown.options[dropdown.selectedIndex].text;
+      selectedOption.textContent = `Jūs izvēlējāties: ${selectedText}`;
+    });
+
+        </script>
+</body>
+</html>

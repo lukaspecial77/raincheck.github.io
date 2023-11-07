@@ -25,8 +25,8 @@
     <div id="container2">
 
 <div id="inputField">
-  <input placeholder="Izvēlieties pilsētu">
-  <button>Saglabāt!</button>
+  <input id="inputCity" placeholder="Izvēlieties pilsētu">
+  <button id="saveCity" onclick="changeCity()">Saglabāt!</button>
 </div>
         
       <p id="city">Rīga</p>
@@ -41,17 +41,15 @@
 
       <button id="next" onclick="displayNextDate()">&rarr;</button>
 
-<div id="preferneces">
-
+<div id="mainData">
         <p>
           Gaisa temperatūra: <a id="temp"></a> <sup>o</sup>C
         </p>
-
         <p>
           Vēja ātrums: <a id="windSpeed"></a> m/s
         </p>
-
-      </div>
+</div>
+<div id="preferences"></div>
 
 
 

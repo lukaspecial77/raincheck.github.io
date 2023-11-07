@@ -68,7 +68,7 @@ body {
 }
 
 #return,
-#submit {
+#logIn {
     text-align: center;
     display: inline-block;
     background-color: #64c4ed;
@@ -79,7 +79,7 @@ body {
     padding-bottom: 2%;
 }
 
-#submit {
+#logIn {
     align-items: flex-end;
     padding: 0;
 }
@@ -92,7 +92,7 @@ body {
     text-decoration: none;
 }
 
-#submit button {
+#logIn button {
     display: block;
     font-size: 20px;
     background-color: #64c4ed;
@@ -105,11 +105,11 @@ body {
 }
 
 #return:hover,
-#submit:hover {
+#logIn:hover {
     background-color: #93deff;
     
 }
 
-#submit button:hover {
+#logIn button:hover {
     background-color: #93deff;
 }

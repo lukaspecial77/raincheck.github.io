@@ -88,3 +88,15 @@ body {
   #preferneces{
     font-size: 30px;
   }
+
+  #inputField{
+    margin-right: 10%;
+    text-align: right;
+  }
+  #inputField input{
+    height: 20px;
+  }
+
+  #inputField button{
+    height: 25px;
+  }

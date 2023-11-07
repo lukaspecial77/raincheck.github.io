@@ -57,39 +57,49 @@
 
 
  <script>
-      var URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=WY1wmPZx37Y8qd0qLrE0P11ZnJZToXmU"
+      var URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=KeHevRPwAWWq40PiNKGpONyQqQVW9xRr"
+      let dailyData;
           
           async function apiCall(URL, date) {
             const result = await fetch(URL)
             result.json()
             .then(data => {
-              const dailyData = data.timelines.daily;
-              
-              const todaysData = dailyData.find(item => item.time.includes(date));
-              
-              if (todaysData) {
-                document.getElementById('temp').innerText = todaysData.values.temperatureAvg;
-                document.getElementById('windSpeed').innerText = todaysData.values.windSpeedAvg;
-                document.getElementById('photo').src = "photos/" + todaysData.values.weatherCodeMax + ".png";
-                for (const key in todaysData.values) {
-                  if (key !== "temperatureAvg") {
-                    const value = todaysData.values[key];
-                    const keyValueElement = document.createElement("p");
-                    keyValueElement.innerText = `${key}: ${value}`;
+              dailyData = data.timelines.daily;
 
-                    // Append the element to the preferences div
-                    document.getElementById('preferneces').appendChild(keyValueElement);
-                  }
-                };
-              } else {
-                console.log("No data for the current date found.");
-              }
+              updateData(date);
+              
             })
-            //document.querySelector()
             .catch(error => console.log(error));
           }
           
+          function updateData(date){
+            document.getElementById("preferences").innerHTML = "";
+
+            const todaysData = dailyData.find(item => item.time.includes(date));
+            
+            if (todaysData) {
+              document.getElementById('city').innerText = city.innerText;
+              document.getElementById('temp').innerText = todaysData.values.temperatureAvg;
+              document.getElementById('windSpeed').innerText = todaysData.values.windSpeedAvg;
+              document.getElementById('photo').src = "photos/" + todaysData.values.weatherCodeMax + ".png";
+              for (const key in todaysData.values) {
+                if (key !== "temperatureAvg") {
+                  const value = todaysData.values[key];
+                  const keyValueElement = document.createElement("p");
+                  keyValueElement.innerText = `${key}: ${value}`;
+
+                  document.getElementById('preferences').appendChild(keyValueElement);
+                }
+              };
+            } else {
+              alert("Šim datumam nav pieejami dati!");
+              console.log("No data for the current date found.");
+            }
+            
+          }
+          
           window.onload = function(){
+            console.log(URL)
             apiCall(URL, currentDate);
           };
         function openNav() {
@@ -110,7 +120,7 @@
 
             currentDate = nextDate.toISOString().split('T')[0];
             document.getElementById('currentDate').innerText = currentDate;
-            apiCall(URL, currentDate);
+            updateData(currentDate);
           }
           
           function displayPreviousDate() {
@@ -119,8 +129,15 @@
             
             currentDate = previousDate.toISOString().split('T')[0];
             document.getElementById('currentDate').innerText = currentDate;
+            updateData(currentDate);
+          }
+          
+          function changeCity() {
+            document.getElementById('city').innerText = document.getElementById('inputCity').value;
+            URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=WY1wmPZx37Y8qd0qLrE0P11ZnJZToXmU"
             apiCall(URL, currentDate);
           }
+
         </script>
         <script type="module">
           import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
@@ -163,11 +180,7 @@
               // User is signed out
             }
           });
-          
-          
-          
-          
-          </script>
+</script>
 
 </body>
 </html>

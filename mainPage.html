@@ -59,7 +59,7 @@
     </div>
 
 
-    <script>
+ <script>
       var URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=WY1wmPZx37Y8qd0qLrE0P11ZnJZToXmU"
           
           async function apiCall(URL, date) {
@@ -71,7 +71,18 @@
               const todaysData = dailyData.find(item => item.time.includes(date));
               
               if (todaysData) {
-                console.log("Data for the current date:", todaysData.values.temperatureAvg);
+                document.getElementById('temp').innerText = todaysData.values.temperatureAvg;
+                document.getElementById('windSpeed').innerText = todaysData.values.windSpeedAvg;
+                for (const key in todaysData.values) {
+                  if (key !== "temperatureAvg") {
+                    const value = todaysData.values[key];
+                    const keyValueElement = document.createElement("p");
+                    keyValueElement.innerText = `${key}: ${value}`;
+
+                    // Append the element to the preferences div
+                    document.getElementById('preferneces').appendChild(keyValueElement);
+                  }
+                };
               } else {
                 console.log("No data for the current date found.");
               }
@@ -91,7 +102,6 @@
           document.getElementById("mySidenav").style.width = "0";
         }
 
-        //let currentDate = new Date();
         let currentDate = new Date().toISOString().split('T')[0];
         console.log(currentDate);
           document.getElementById('currentDate').innerText = currentDate;
@@ -160,5 +170,6 @@
           
           
           </script>
+
 </body>
 </html>

@@ -72,6 +72,7 @@
               if (todaysData) {
                 document.getElementById('temp').innerText = todaysData.values.temperatureAvg;
                 document.getElementById('windSpeed').innerText = todaysData.values.windSpeedAvg;
+                document.getElementById('photo').src = "photos/" + todaysData.values.weatherCodeMax + ".png";
                 for (const key in todaysData.values) {
                   if (key !== "temperatureAvg") {
                     const value = todaysData.values[key];

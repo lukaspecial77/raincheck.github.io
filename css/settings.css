@@ -9,7 +9,40 @@ body {
   margin: 2% 2% 2% 2%;
 }
 
+#container2{
+  margin: 5% 2% 2% 10%;
+  display: flex;
+}
 
+#inputC{
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#inputC input{
+margin-bottom: 10%;
+width: 220px;
+height: 25px;
+}
+
+#inputC button{
+  width: 100px;
+  height: 25px;
+  cursor: pointer;
+  }
+
+#logOutC{
+text-align: left;
+margin: 5% 30% 5% 10%;
+}
+
+#logOutC button{
+width: 100px;
+height: 25px;
+cursor: pointer;
+}
 
 .sidenav {
     height: 100%;
@@ -51,24 +84,4 @@ body {
     .sidenav a {font-size: 18px;}
   }
 
-  #conatiner{
-    margin: 2%;
-    text-align: center;
-  }
-
-  #conatiner img{
-    margin: 2%;
-  }
-
-  .submit-btn{
-    margin: 2%;
-  }
-
-  .submit-btn{
-    background: white;
-    width: 10%;
-  }
-
-  button:hover{
-    cursor: pointer;
-  }
+ 

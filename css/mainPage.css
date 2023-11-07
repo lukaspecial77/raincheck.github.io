@@ -99,4 +99,14 @@ body {
 
   #inputField button{
     height: 25px;
+    background: #64c4ed;
+    border-color: #64c4ed;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  #inputField button:hover {
+    background: #8FBC8F;
+    border-color: #8FBC8F;
+    color: black;
   }

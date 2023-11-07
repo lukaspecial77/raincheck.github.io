@@ -67,7 +67,7 @@ body {
 }
 
 #return,
-#submit {
+#signUp {
     text-align: center;
     display: inline-block;
     background-color: #64c4ed;
@@ -78,7 +78,7 @@ body {
     padding-bottom: 2%;
 }
 
-#submit {
+#signUp {
     align-items: flex-end;
     padding: 0;
 }
@@ -91,7 +91,7 @@ body {
     text-decoration: none;
 }
 
-#submit button {
+#signUp button {
     display: block;
     font-size: 20px;
     background-color: #64c4ed;
@@ -104,11 +104,11 @@ body {
 }
 
 #return:hover,
-#submit:hover {
+#signUp:hover {
     background-color: #93deff;
     
 }
 
-#submit button:hover {
+#signUp button:hover {
     background-color: #93deff;
 }

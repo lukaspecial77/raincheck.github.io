@@ -15,9 +15,9 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Aktuālie laikapstākļi</a>
-            <a href="#">Meklēt pēc pilsētas</a>
-            <a href="#">Preferences</a>
-            <a href="#">Lietotāja iestatījumi</a>
+            <a href="search.html">Meklēt pēc pilsētas</a>
+            <a href="preferences.html">Preferences</a>
+            <a href="settings.html">Lietotāja iestatījumi</a>
           </div>
           
           <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -38,17 +38,13 @@
       <button id="next" onclick="displayNextDate()">&rarr;</button>
 
       <div id="preferneces">
-
-        <p id="pref1">
-          Saulains
-        </p>
   
         <p id="pref2">
           Vēja ātrums 10 m/s
         </p>
   
         <p id="temp">
-          15 <sup>0</sup>C
+          15 <sup>o</sup>C
         </p>
 
       </div>
@@ -59,6 +55,29 @@
 
 
     <script>
+      var URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=WY1wmPZx37Y8qd0qLrE0P11ZnJZToXmU"
+          
+          async function apiCall(URL, date) {
+            const result = await fetch(URL)
+            result.json()
+            .then(data => {
+              const dailyData = data.timelines.daily;
+              
+              const todaysData = dailyData.find(item => item.time.includes(date));
+              
+              if (todaysData) {
+                console.log("Data for the current date:", todaysData.values.temperatureAvg);
+              } else {
+                console.log("No data for the current date found.");
+              }
+            })
+            //document.querySelector()
+            .catch(error => console.log(error));
+          }
+          
+          window.onload = function(){
+            apiCall(URL, currentDate);
+          };
         function openNav() {
           document.getElementById("mySidenav").style.width = "400px";
         }
@@ -67,18 +86,74 @@
           document.getElementById("mySidenav").style.width = "0";
         }
 
-        let currentDate = new Date();
-          document.getElementById('currentDate').innerText = currentDate.toDateString();
+        //let currentDate = new Date();
+        let currentDate = new Date().toISOString().split('T')[0];
+        console.log(currentDate);
+          document.getElementById('currentDate').innerText = currentDate;
 
           function displayNextDate() {
-            currentDate.setDate(currentDate.getDate() + 1);
-            document.getElementById('currentDate').innerText = currentDate.toDateString();
-          }
+            let nextDate = new Date(currentDate);
+            nextDate.setDate(nextDate.getDate() + 1);
 
+            currentDate = nextDate.toISOString().split('T')[0];
+            document.getElementById('currentDate').innerText = currentDate;
+            apiCall(URL, currentDate);
+          }
+          
           function displayPreviousDate() {
-            currentDate.setDate(currentDate.getDate() - 1);
-            document.getElementById('currentDate').innerText = currentDate.toDateString();
+            let previousDate = new Date(currentDate);
+            previousDate.setDate(previousDate.getDate() - 1);
+            
+            currentDate = previousDate.toISOString().split('T')[0];
+            document.getElementById('currentDate').innerText = currentDate;
+            apiCall(URL, currentDate);
           }
         </script>
+        <script type="module">
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+          import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+          import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+          import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+          
+          const firebaseConfig = {
+            apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
+            authDomain: "raincheck-4603d.firebaseapp.com",
+            databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "raincheck-4603d",
+            storageBucket: "raincheck-4603d.appspot.com",
+            messagingSenderId: "617146199690",
+            appId: "1:617146199690:web:a23ec892ec29be29a6c773",
+            measurementId: "G-CYCZ3FTPTH"
+          };
+          
+          const app = initializeApp(firebaseConfig);
+          const analytics = getAnalytics(app);
+          const db = getDatabase(app);
+          const auth = getAuth(app);
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              const dbRef = ref(db, 'users');
+              
+              onValue(dbRef, (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                  if (childSnapshot.val().email == user.email){
+                    console.log(childSnapshot.val().name)//!!!!!!!!!!!!!!!!!!!!
+                    var city = childSnapshot.val().city;
+                    console.log(city);
+                  }
+                });
+                
+              }, {
+                onlyOnce: true
+              });
+            } else {
+              // User is signed out
+            }
+          });
+          
+          
+          
+          
+          </script>
 </body>
 </html>

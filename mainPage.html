@@ -69,6 +69,49 @@
     </div>
 
 <div  id="hidden"></div>
+
+<script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+      import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+      
+      const firebaseConfig = {
+        apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
+        authDomain: "raincheck-4603d.firebaseapp.com",
+        databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "raincheck-4603d",
+        storageBucket: "raincheck-4603d.appspot.com",
+        messagingSenderId: "617146199690",
+        appId: "1:617146199690:web:a23ec892ec29be29a6c773",
+        measurementId: "G-CYCZ3FTPTH"
+      };
+      
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase(app);
+      const auth = getAuth(app);
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const dbRef = ref(db, 'users');
+          
+          onValue(dbRef, (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              if (childSnapshot.val().email == user.email){
+                document.getElementById('name').innerText = childSnapshot.val().name;
+                document.getElementById("city").innerText = childSnapshot.val().city;
+                document.getElementById("hidden").innerText = childSnapshot.val().preferences;
+              }
+            });
+            
+          }, {
+            onlyOnce: true
+          });
+        } else {
+          // User is signed out
+        }
+      });
+      </script>
     
  <script>
       var URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=KeHevRPwAWWq40PiNKGpONyQqQVW9xRr"
@@ -153,48 +196,6 @@
           }
 
         </script>
-        <script type="module">
-          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-          import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
-          import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
-          import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
-          
-          const firebaseConfig = {
-            apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
-            authDomain: "raincheck-4603d.firebaseapp.com",
-            databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "raincheck-4603d",
-            storageBucket: "raincheck-4603d.appspot.com",
-            messagingSenderId: "617146199690",
-            appId: "1:617146199690:web:a23ec892ec29be29a6c773",
-            measurementId: "G-CYCZ3FTPTH"
-          };
-          
-          const app = initializeApp(firebaseConfig);
-          const analytics = getAnalytics(app);
-          const db = getDatabase(app);
-          const auth = getAuth(app);
-          onAuthStateChanged(auth, (user) => {
-            if (user) {
-              const dbRef = ref(db, 'users');
-              
-              onValue(dbRef, (snapshot) => {
-                snapshot.forEach((childSnapshot) => {
-                  if (childSnapshot.val().email == user.email){
-                    document.getElementById('name').innerText = childSnapshot.val().name;
-                    var city = childSnapshot.val().city;
-                    console.log(city);
-                  }
-                });
-                
-              }, {
-                onlyOnce: true
-              });
-            } else {
-              // User is signed out
-            }
-          });
-</script>
 
 </body>
 </html>

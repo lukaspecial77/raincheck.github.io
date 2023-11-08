@@ -7,6 +7,17 @@ body {
 
 #container{
   margin: 2% 2% 2% 2%;
+  display: flex;
+}
+
+#NameC{
+  display: flex;
+  margin-left: 10%;
+  
+}
+
+#NameC p{
+  font-size: 25px;
 }
 
 

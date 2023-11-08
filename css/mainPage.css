@@ -121,3 +121,7 @@ body {
     border-color: #8FBC8F;
     color: black;
   }
+
+#temp, #windSpeed{
+font-weight: bold;
+}

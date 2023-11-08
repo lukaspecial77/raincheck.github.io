@@ -20,6 +20,13 @@
           </div>
           
           <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+                  <div id="NameC">
+            <p>Sveiks, </p>
+            <p id="name"></p>
+            <p>!</p>
+            </div>
+        
     </div>
     
     <div id="container2">
@@ -167,7 +174,7 @@
               onValue(dbRef, (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                   if (childSnapshot.val().email == user.email){
-                    console.log(childSnapshot.val().name)//!!!!!!!!!!!!!!!!!!!!
+                    document.getElementById('name').innerText = childSnapshot.val().name;
                     var city = childSnapshot.val().city;
                     console.log(city);
                   }

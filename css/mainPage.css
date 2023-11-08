@@ -125,3 +125,15 @@ body {
 #temp, #windSpeed{
 font-weight: bold;
 }
+
+  #prefC{
+    display: flex;
+    margin: 1% 0% 5% 0%;
+    text-align: center;
+    width: 100%;
+}
+
+#preferences1, #preferences2, #preferences3{
+  width: 33%;
+  margin-left: 3%;
+}

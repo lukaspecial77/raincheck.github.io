@@ -137,3 +137,7 @@ font-weight: bold;
   width: 33%;
   margin-left: 3%;
 }
+
+#hidden{
+display: none;
+}

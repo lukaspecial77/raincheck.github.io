@@ -139,13 +139,18 @@
               document.getElementById('temp').innerText = todaysData.values.temperatureAvg;
               document.getElementById('windSpeed').innerText = todaysData.values.windSpeedAvg;
               document.getElementById('photo').src = "photos/" + todaysData.values.weatherCodeMax + ".png";
+              var pref = document.getElementById('hidden').innerText.split(',');
+              let currentPreferencesContainerIndex = 1;
               for (const key in todaysData.values) {
-                if (key !== "temperatureAvg") {
+                if (pref.includes(key)) {
                   const value = todaysData.values[key];
                   const keyValueElement = document.createElement("p");
                   keyValueElement.innerText = `${key}: ${value}`;
+                  
+                  const preferencesContainer = document.getElementById(`preferences${currentPreferencesContainerIndex}`);
+                  preferencesContainer.appendChild(keyValueElement);
 
-                  document.getElementById('preferences').appendChild(keyValueElement);
+                  currentPreferencesContainerIndex = (currentPreferencesContainerIndex % 3) + 1;
                 }
               };
             } else {

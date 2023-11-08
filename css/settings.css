@@ -98,22 +98,4 @@ cursor: pointer;
     color: black;
   }
  
-#submit{
-  margin: 3% 7% 3% 3%;
-  text-align: right;
-}
 
-button{
-  width: 70px;
-  height: 25px;
-  background: #64c4ed;
-  border-color: #64c4ed;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-    button:hover {
-  background: #8FBC8F;
-  border-color: #8FBC8F;
-  color: black;
-}

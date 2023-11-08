@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lan="en">
+  <head>
+    <title>RAINCHECCK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css\mainPage.css" rel="stylesheet">
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Aktuālie laikapstākļi</a>
+        <a href="preferences.html">Preferences</a>
+        <a href="settings.html">Lietotāja iestatījumi</a>
+      </div>
+            
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+      <div id="NameC">
+        <p>Sveiks,&nbsp;</p>
+        <p id="name"></p>
+        <p>!</p>
+      </div>      
+    </div>
+      
+    <div id="container2">
+      <div id="inputField">
+        <input id="inputCity" placeholder="Izvēlieties pilsētu">
+        <button id="saveCity" onclick="changeCity()">Saglabāt!</button>
+      </div>
+          
+      <p id="city"></p>
+
+      <p id="dateDisplay">Datums: <span id="currentDate"></span></p>
+
+      <button id="prev" onclick="displayPreviousDate()">&larr;</button>
+      <img id="photo" src="">
+      <button id="next" onclick="displayNextDate()">&rarr;</button>
+
+      <div id="mainData">
+        <p>
+          Gaisa temperatūra: <a id="temp"></a> <sup>o</sup>C
+        </p>
+        <p>
+          Vēja ātrums: <a id="windSpeed"></a> m/s
+        </p>
+      </div>
+          
+      <div id="prefC">
+        <div id="preferences1"></div>
+        <div id="preferences2"></div>
+        <div id="preferences3"></div>
+      </div>
+    </div>
+
+    <div id="hidden"></div>
+
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+      import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+        
+      const firebaseConfig = {
+        apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
+        authDomain: "raincheck-4603d.firebaseapp.com",
+        databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "raincheck-4603d",
+        storageBucket: "raincheck-4603d.appspot.com",
+        messagingSenderId: "617146199690",
+        appId: "1:617146199690:web:a23ec892ec29be29a6c773",
+        measurementId: "G-CYCZ3FTPTH"
+      };
+        
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase(app);
+      const auth = getAuth(app);
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const dbRef = ref(db, 'users');
+          onValue(dbRef, (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              if (childSnapshot.val().email == user.email){
+                document.getElementById('name').innerText = childSnapshot.val().name;
+                document.getElementById("city").innerText = childSnapshot.val().city;
+                document.getElementById("hidden").innerText = childSnapshot.val().preferences;
+              }
+            });    
+          }, {
+            onlyOnce: true
+          });
+        } else {
+          // User is signed out
+        }
+      });
+    </script>
+      
+    <script>
+      var URL = ""
+      let dailyData;
+      let currentDate = new Date().toISOString().split('T')[0];
+        
+      document.getElementById('currentDate').innerText = currentDate;
+        
+      //  Savac API datus
+      async function apiCall(URL, date) {
+        const result = await fetch(URL)
+        result.json()
+          .then(data => {
+            dailyData = data.timelines.daily;      
+            updateData(date);
+          })
+          .catch(error => console.log(error));
+      }
+        
+      //  Atjauno datus uz ekrana
+      function updateData(date){
+        document.getElementById("prefC").innerHTML = "<div id=\"preferences1\"></div><div id=\"preferences2\"></div><div id=\"preferences3\"></div>";
+          
+        const todaysData = dailyData.find(item => item.time.includes(date));
+          
+        if (todaysData) {
+          document.getElementById('city').innerText = city.innerText;
+          document.getElementById('temp').innerText = todaysData.values.temperatureAvg;
+          document.getElementById('windSpeed').innerText = todaysData.values.windSpeedAvg;
+          document.getElementById('photo').src = "photos/" + todaysData.values.weatherCodeMax + ".png";
+      
+          var pref = document.getElementById('hidden').innerText.split(',');
+          let currentPreferencesContainerIndex = 1;
+      
+          for (const key in todaysData.values) {
+            if (pref.includes(key)) {
+              const value = todaysData.values[key];
+              const keyValueElement = document.createElement("p");
+              keyValueElement.innerText = `${key}: ${value}`;          
+              const preferencesContainer = document.getElementById(`preferences${currentPreferencesContainerIndex}`);
+              preferencesContainer.appendChild(keyValueElement);  
+              currentPreferencesContainerIndex = (currentPreferencesContainerIndex % 3) + 1;
+            }
+          };
+        } else {
+          alert("Šim datumam nav pieejami dati!");
+        }    
+      }
+      
+      //  Atver navigaciju
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "400px";
+      }
+      
+      //  Aizver navigaciju
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+        
+      //  Iegust un attelo nakama datuma datus
+      function displayNextDate() {
+        let nextDate = new Date(currentDate);
+        nextDate.setDate(nextDate.getDate() + 1);    
+        currentDate = nextDate.toISOString().split('T')[0];
+        document.getElementById('currentDate').innerText = currentDate;
+        updateData(currentDate);
+      }
+        
+      //  Iegust un attelo iepriekseja datuma datus
+      function displayPreviousDate() {
+        let previousDate = new Date(currentDate);
+        previousDate.setDate(previousDate.getDate() - 1);
+        currentDate = previousDate.toISOString().split('T')[0];
+        document.getElementById('currentDate').innerText = currentDate;
+        updateData(currentDate);
+      }
+        
+      //  Nomaina pilsetu par kuru tiek atteloti dati
+      function changeCity() {
+        document.getElementById('city').innerText = document.getElementById('inputCity').value;
+        URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=WY1wmPZx37Y8qd0qLrE0P11ZnJZToXmU"
+        apiCall(URL, currentDate);
+      }
+    
+      //  Lapai ieladejoties attelo lietotaja noklusejuma pilsetas datus
+      function tryApiCall() {
+        if (city.innerText !== "") {
+          URL = "https://api.tomorrow.io/v4/weather/forecast?location=" + city.innerText + "&timestep=1h&apikey=KeHevRPwAWWq40PiNKGpONyQqQVW9xRr"
+          console.log(URL);
+          apiCall(URL, currentDate);
+        } else {
+          setTimeout(tryApiCall, 100);
+        }
+      }
+      window.onload = function(){
+        tryApiCall();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lan="en">
+  <head>
+      <title>RAINCHECCK</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="css\preferneces.css" rel="stylesheet">
+      <meta charset="UTF-8">
+  </head>
+  <body>
+    <div id="container">
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="mainPage.html">Aktuālie laikapstākļi</a>
+        <a href="preferences.html">Preferences</a>
+        <a href="settings.html">Lietotāja iestatījumi</a>
+      </div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    
+    <div id="tittle">
+      <h1>Preferences</h1>
+      <p>Izvēlieties jums vēlamos parametrus, kurus gribat redzēt galvenajā lapā!</p>
+    </div>
+
+    <div id="checkBoxField">
+      <div id="container2">
+
+      <div>
+        <input type="checkbox" id="cloudBaseAvg" name="cloudBaseAvg"/>
+        <label for="cloudBaseAvg">cloudBaseAvg</label>
+      </div>
+      
+
+      <div>
+        <input type="checkbox" id="cloudBaseMax" name="cloudBaseMax"/>
+        <label for="cloudBaseMax">cloudBaseMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudBaseMin" name="cloudBaseMin"/>
+        <label for="cloudBaseMin">cloudBaseMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudCeilingAvg" name="cloudCeilingAvg"/>
+        <label for="cloudCeilingAvg">cloudCeilingAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudCeilingMax" name="cloudCeilingMax"/>
+        <label for="cloudCeilingMax">cloudCeilingMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudCeilingMin" name="cloudCeilingMin"/>
+        <label for="cloudCeilingMin">cloudCeilingMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudCoverAvg" name="cloudCoverAvg"/>
+        <label for="cloudCoverAvg">cloudCoverAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudCoverMax" name="cloudCoverMax"/>
+        <label for="cloudCoverMax">cloudCoverMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="cloudCoverMin" name="cloudCoverMin"/>
+        <label for="cloudCoverMin">cloudCoverMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="dewPointAvg" name="dewPointAvg"/>
+        <label for="dewPointAvg">dewPointAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="dewPointMax" name="dewPointMax"/>
+        <label for="dewPointMax">dewPointMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="dewPointMin" name="dewPointMin"/>
+        <label for="dewPointMin">dewPointMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="evapotranspirationAvg" name="evapotranspirationAvg"/>
+        <label for="evapotranspirationAvg">evapotranspirationAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="evapotranspirationMax" name="evapotranspirationMax"/>
+        <label for="evapotranspirationMax">evapotranspirationMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="evapotranspirationMin" name="evapotranspirationMin"/>
+        <label for="evapotranspirationMin">evapotranspirationMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="evapotranspirationSum" name="evapotranspirationSum"/>
+        <label for="evapotranspirationSum">evapotranspirationSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="freezingRainIntensityAvg" name="freezingRainIntensityAvg"/>
+        <label for="freezingRainIntensityAvg">freezingRainIntensityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="freezingRainIntensityMax" name="freezingRainIntensityMax"/>
+        <label for="freezingRainIntensityMax">freezingRainIntensityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="freezingRainIntensityMin" name="freezingRainIntensityMin"/>
+        <label for="freezingRainIntensityMin">freezingRainIntensityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="humidityAvg" name="humidityAvg"/>
+        <label for="humidityAvg">humidityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="humidityMax" name="humidityMax"/>
+        <label for="humidityMax">humidityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="humidityMin" name="humidityMin"/>
+        <label for="humidityMin">humidityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationAvg" name="iceAccumulationAvg"/>
+        <label for="iceAccumulationAvg">iceAccumulationAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationLweAvg" name="iceAccumulationLweAvg"/>
+        <label for="iceAccumulationLweAvg">iceAccumulationLweAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationLweMax" name="iceAccumulationLweMax"/>
+        <label for="iceAccumulationLweMax">iceAccumulationLweMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationLweMin" name="iceAccumulationLweMin"/>
+        <label for="iceAccumulationLweMin">iceAccumulationLweMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationLweSum" name="iceAccumulationLweSum"/>
+        <label for="iceAccumulationLweSum">iceAccumulationLweSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationMax" name="iceAccumulationMax"/>
+        <label for="iceAccumulationMax">iceAccumulationMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationMin" name="iceAccumulationMin"/>
+        <label for="iceAccumulationMin">iceAccumulationMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="iceAccumulationSum" name="iceAccumulationSum"/>
+        <label for="iceAccumulationSum">iceAccumulationSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="moonriseTime" name="moonriseTime"/>
+        <label for="moonriseTime">moonriseTime</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="moonsetTime" name="moonsetTime"/>
+        <label for="moonsetTime">moonsetTime</label>
+      </div>
+      
+    </div>
+
+    <div id="container3">
+      
+      <div>
+        <input type="checkbox" id="precipitationProbabilityAvg" name="precipitationProbabilityAvg"/>
+        <label for="precipitationProbabilityAvg">precipitationProbabilityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="precipitationProbabilityMax" name="precipitationProbabilityMax"/>
+        <label for="precipitationProbabilityMax">precipitationProbabilityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="precipitationProbabilityMin" name="precipitationProbabilityMin"/>
+        <label for="precipitationProbabilityMin">precipitationProbabilityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="pressureSurfaceLevelAvg" name="pressureSurfaceLevelAvg"/>
+        <label for="pressureSurfaceLevelAvg">pressureSurfaceLevelAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="pressureSurfaceLevelMax" name="pressureSurfaceLevelMax"/>
+        <label for="pressureSurfaceLevelMax">pressureSurfaceLevelMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="pressureSurfaceLevelMin" name="pressureSurfaceLevelMin"/>
+        <label for="pressureSurfaceLevelMin">pressureSurfaceLevelMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationAvg" name="rainAccumulationAvg"/>
+        <label for="rainAccumulationAvg">rainAccumulationAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationLweAvg" name="rainAccumulationLweAvg"/>
+        <label for="rainAccumulationLweAvg">rainAccumulationLweAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationLweMax" name="rainAccumulationLweMax"/>
+        <label for="rainAccumulationLweMax">rainAccumulationLweMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationLweMin" name="rainAccumulationLweMin"/>
+        <label for="rainAccumulationLweMin">rainAccumulationLweMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationMax" name="rainAccumulationMax"/>
+        <label for="rainAccumulationMax">rainAccumulationMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationMin" name="rainAccumulationMin"/>
+        <label for="rainAccumulationMin">rainAccumulationMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainAccumulationSum" name="rainAccumulationSum"/>
+        <label for="rainAccumulationSum">rainAccumulationSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainIntensityAvg" name="rainIntensityAvg"/>
+        <label for="rainIntensityAvg">rainIntensityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainIntensityMax" name="rainIntensityMax"/>
+        <label for="rainIntensityMax">rainIntensityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="rainIntensityMin" name="rainIntensityMin"/>
+        <label for="rainIntensityMin">rainIntensityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationAvg" name="sleetAccumulationAvg"/>
+        <label for="sleetAccumulationAvg">sleetAccumulationAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationLweAvg" name="sleetAccumulationLweAvg"/>
+        <label for="sleetAccumulationLweAvg">sleetAccumulationLweAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationLweMax" name="sleetAccumulationLweMax"/>
+        <label for="sleetAccumulationLweMax">sleetAccumulationLweMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationLweMin" name="sleetAccumulationLweMin"/>
+        <label for="sleetAccumulationLweMin">sleetAccumulationLweMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationLweSum" name="sleetAccumulationLweSum"/>
+        <label for="sleetAccumulationLweSum">sleetAccumulationLweSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationMax" name="sleetAccumulationMax"/>
+        <label for="sleetAccumulationMax">sleetAccumulationMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetAccumulationMin" name="sleetAccumulationMin"/>
+        <label for="sleetAccumulationMin">sleetAccumulationMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetIntensityAvg" name="sleetIntensityAvg"/>
+        <label for="sleetIntensityAvg">sleetIntensityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetIntensityMax" name="sleetIntensityMax"/>
+        <label for="sleetIntensityMax">sleetIntensityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sleetIntensityMin" name="sleetIntensityMin"/>
+        <label for="sleetIntensityMin">sleetIntensityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowAccumulationAvg" name="snowAccumulationAvg"/>
+        <label for="snowAccumulationAvg">snowAccumulationAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowAccumulationLweAvg" name="snowAccumulationLweAvg"/>
+        <label for="snowAccumulationLweAvg">snowAccumulationLweAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowAccumulationLweMax" name="snowAccumulationLweMax"/>
+        <label for="snowAccumulationLweMax">snowAccumulationLweMax</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="snowAccumulationLweMin" name="snowAccumulationLweMin"/>
+        <label for="snowAccumulationLweMin">snowAccumulationLweMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowAccumulationLweSum" name="snowAccumulationLweSum"/>
+        <label for="snowAccumulationLweSum">snowAccumulationLweSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowAccumulationMax" name="snowAccumulationMax"/>
+        <label for="snowAccumulationMax">snowAccumulationMax</label>
+      </div>
+
+    </div>
+
+    <div id="container4">
+      <div>
+        <input type="checkbox" id="snowAccumulationMin" name="snowAccumulationMin"/>
+        <label for="snowAccumulationMin">snowAccumulationMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowAccumulationSum" name="snowAccumulationSum"/>
+        <label for="snowAccumulationSum">snowAccumulationSum</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowIntensityAvg" name="snowIntensityAvg"/>
+        <label for="snowIntensityAvg">snowIntensityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowIntensityMax" name="snowIntensityMax"/>
+        <label for="snowIntensityMax">snowIntensityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="snowIntensityMin" name="snowIntensityMin"/>
+        <label for="snowIntensityMin">snowIntensityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sunriseTime" name="sunriseTime"/>
+        <label for="sunriseTime">sunriseTime</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="sunsetTime" name="sunsetTime"/>
+        <label for="sunsetTime">sunsetTime</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="temperatureApparentAvg" name="temperatureApparentAvg"/>
+        <label for="temperatureApparentAvg">temperatureApparentAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="temperatureApparentMax" name="temperatureApparentMax"/>
+        <label for="temperatureApparentMax">temperatureApparentMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="temperatureApparentMin" name="temperatureApparentMin"/>
+        <label for="temperatureApparentMin">temperatureApparentMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="temperatureAvg" name="temperatureAvg"/>
+        <label for="temperatureAvg">temperatureAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="temperatureMax" name="temperatureMax"/>
+        <label for="temperatureMax">temperatureMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="temperatureMin" name="temperatureMin"/>
+        <label for="temperatureMin">temperatureMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="uvHealthConcernAvg" name="uvHealthConcernAvg"/>
+        <label for="uvHealthConcernAvg">uvHealthConcernAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="uvHealthConcernMax" name="uvHealthConcernMax"/>
+        <label for="uvHealthConcernMax">uvHealthConcernMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="uvHealthConcernMin" name="uvHealthConcernMin"/>
+        <label for="uvHealthConcernMin">uvHealthConcernMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="uvIndexAvg" name="uvIndexAvg"/>
+        <label for="uvIndexAvg">uvIndexAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="uvIndexMax" name="uvIndexMax"/>
+        <label for="uvIndexMax">uvIndexMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="uvIndexMin" name="uvIndexMin"/>
+        <label for="uvIndexMin">uvIndexMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="visibilityAvg" name="visibilityAvg"/>
+        <label for="visibilityAvg">visibilityAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="visibilityMax" name="visibilityMax"/>
+        <label for="visibilityMax">visibilityMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="visibilityMin" name="visibilityMin"/>
+        <label for="visibilityMin">visibilityMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="weatherCodeMax" name="weatherCodeMax"/>
+        <label for="weatherCodeMax">weatherCodeMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="weatherCodeMin" name="weatherCodeMin"/>
+        <label for="weatherCodeMin">weatherCodeMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windDirectionAvg" name="windDirectionAvg"/>
+        <label for="windDirectionAvg">windDirectionAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windGustAvg" name="windGustAvg"/>
+        <label for="windGustAvg">windGustAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windGustMax" name="windGustMax"/>
+        <label for="windGustMax">windGustMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windGustMin" name="windGustMin"/>
+        <label for="windGustMin">windGustMin</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windSpeedAvg" name="windSpeedAvg"/>
+        <label for="windSpeedAvg">windSpeedAvg</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windSpeedMax" name="windSpeedMax"/>
+        <label for="windSpeedMax">windSpeedMax</label>
+      </div>
+      
+      
+      <div>
+        <input type="checkbox" id="windSpeedMin" name="windSpeedMin"/>
+        <label for="windSpeedMin">windSpeedMin</label>
+      </div>
+
+    </div>
+
+  </div>
+
+      <div id="submit">
+    <button id="submitButton">Iesniegt</button>
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "400px";
+    }
+      
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+    import { getDatabase, onValue, ref, update } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
+      authDomain: "raincheck-4603d.firebaseapp.com",
+      databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "raincheck-4603d",
+      storageBucket: "raincheck-4603d.appspot.com",
+      messagingSenderId: "617146199690",
+      appId: "1:617146199690:web:a23ec892ec29be29a6c773",
+      measurementId: "G-CYCZ3FTPTH"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    
+    function updatePreferences() {
+      var checkboxesContainer2 = document.querySelectorAll('#container2 input[type="checkbox"]');
+      var checkboxesContainer3 = document.querySelectorAll('#container3 input[type="checkbox"]');
+      var checkboxesContainer4 = document.querySelectorAll('#container4 input[type="checkbox"]');
+
+      var checkboxes = [...checkboxesContainer2, ...checkboxesContainer3, ...checkboxesContainer4];
+      var checkedCheckboxes = [];
+      
+      const user = auth.currentUser;
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+          console.log(checkbox);
+          checkedCheckboxes.push(checkbox.name);
+        }
+        
+        const dbRef = ref(db, 'users');
+    
+        onValue(dbRef, (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            if (childSnapshot.val().email == user.email){
+              var checkedString = checkedCheckboxes.join(',');
+              const userRef = childSnapshot.ref;
+              update(userRef, {
+                preferences: checkedString
+              });
+            }
+          })
+        });
+      });
+      alert("Preferences atjaunotas!");
+    }
+
+    submitButton.addEventListener("click", (e) => {
+      updatePreferences();
+    });
+    
+  </script>
+  </body>
+</html>
+

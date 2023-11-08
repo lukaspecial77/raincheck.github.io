@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <title>RAINCHECCK</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css\SignUp.css" rel="stylesheet">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="container">
+            <div id="mainScreen">
+                <div id="title">
+                    <p>Sign Up</p>
+                </div>
+
+                <div id="focus">
+                    <div id="textField">
+                        <input id="name" placeholder="Vārds Uzvārds" />
+                        <input id="email" placeholder="E-pasts" />
+                        <input id="password"  type = "password" placeholder="Parole" />
+                    </div>
+
+                    <div id="logo">
+                        <img src="photos\logo.png">
+                    </div>
+                </div>
+
+                <div id="bottomMenu">
+                    <div id="return">
+                        <a href="index.html">Atpakaļ</a>
+                    </div>
+                    <div type="signUp" id="signUp">
+                        <button>Iesniegt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+            import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+            import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+            
+            const firebaseConfig = {
+                apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
+                authDomain: "raincheck-4603d.firebaseapp.com",
+                databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "raincheck-4603d",
+                storageBucket: "raincheck-4603d.appspot.com",
+                messagingSenderId: "617146199690",
+                appId: "1:617146199690:web:a23ec892ec29be29a6c773",
+                measurementId: "G-CYCZ3FTPTH"
+            };
+        
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const db = getDatabase(app);
+            const auth = getAuth();
+            
+            signUp.addEventListener("click", (e) => {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        console.log(user.uid)
+                        console.log(name)
+                        console.log(email)
+                        set(ref(db, "users/" + user.uid),{
+                            name: name,
+                            email: email,
+                            city: "Rīga",
+                            preferences: ""
+                        });
+                        alert("Lietotājs izveidots!");
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                    });
+            });
+        </script>
+    </body>
+</html>

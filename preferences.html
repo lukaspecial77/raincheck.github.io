@@ -621,6 +621,67 @@
           document.getElementById("mySidenav").style.width = "0";
         }
         </script>
+<script type="module">
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+              import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+              import { getDatabase, onValue, ref, update } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+              import { getAuth } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+              
+              const firebaseConfig = {
+                  apiKey: "AIzaSyDmVb1FpDigYBuhZ01VD8bjkaW2ICNYaOs",
+                  authDomain: "raincheck-4603d.firebaseapp.com",
+                  databaseURL: "https://raincheck-4603d-default-rtdb.europe-west1.firebasedatabase.app",
+                  projectId: "raincheck-4603d",
+                  storageBucket: "raincheck-4603d.appspot.com",
+                  messagingSenderId: "617146199690",
+                  appId: "1:617146199690:web:a23ec892ec29be29a6c773",
+                  measurementId: "G-CYCZ3FTPTH"
+              };
+            
+              const app = initializeApp(firebaseConfig);
+              const analytics = getAnalytics(app);
+              const db = getDatabase(app);
+              const auth = getAuth(app);
+
+              
+              function updatePreferences() {
+                var checkboxesContainer2 = document.querySelectorAll('#container2 input[type="checkbox"]');
+                var checkboxesContainer3 = document.querySelectorAll('#container3 input[type="checkbox"]');
+                var checkboxesContainer4 = document.querySelectorAll('#container4 input[type="checkbox"]');
+
+                var checkboxes = [...checkboxesContainer2, ...checkboxesContainer3, ...checkboxesContainer4];
+                console.log(checkboxes);
+                var checkedCheckboxes = [];
+                
+                const user = auth.currentUser;
+                checkboxes.forEach(function(checkbox) {
+                  if (checkbox.checked) {
+                    console.log(checkbox);
+                    checkedCheckboxes.push(checkbox.name);
+                  }
+                  const dbRef = ref(db, 'users');
+              
+                  onValue(dbRef, (snapshot) => {
+                    snapshot.forEach((childSnapshot) => {
+                      if (childSnapshot.val().email == user.email){
+                        var checkedString = checkedCheckboxes.join(',');
+                        const userRef = childSnapshot.ref;
+                        update(userRef, {
+                          preferences: checkedString
+                        });
+                      }
+                    })
+                  });
+                });
+                alert("Preferences atjaunotas!");
+              }
+
+              submitButton.addEventListener("click", (e) => {
+                updatePreferences();
+              });
+              
+            </script>
+    
 </body>
 </html>
 
